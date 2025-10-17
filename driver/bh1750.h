@@ -2,7 +2,6 @@
 #define BH1750_H
 
 #include <stdint.h>
-#include <bh1750_i2c_interface.h>
 
 /* BH1750 Addresses */
 #define BH1750_ADDR_LOW   0x23
@@ -24,7 +23,9 @@
 
 #define BH1750_ONE_TIME_L_RES_MODE      0x23    // One time measurement, 4lx resolution, 16ms typical time
 
-#define BH1750_CHANGE_MEAS_TIME_HIGH(b7,b6,b5) 0b01000##b7##b6##b5
+#define BH1750_CHANGE_MEAS_TIME_HIGH(b7,b6,b5)       (0x40 | (b7 << 2) | (b6 << 1) | b5)
+#define BH1750_CHANGE_MEAS_TIME_LOW(b4,b3,b2,b1,b0)  (0x60 | (b4 << 4) | (b3 << 3) | (b2 << 2) | (b1 << 1) | b0)
+
 
 typedef enum 
 {
