@@ -30,7 +30,11 @@
 typedef enum 
 {
     BH1750_OK,
-    BH1750_ERROR
+    BH1750_POWER_ON_ERROR,
+    BH1750_POWER_DOWN_ERROR,
+    BH1750_RESET_ERROR,
+    BH1750_SET_MODE_ERROR,
+    BH1750_READ_LUX_ERROR
 
 } BH1750_Status_t;
 
@@ -45,14 +49,7 @@ BH1750_Status_t BH1750_reset(void);
 
 BH1750_Status_t BH1750_set_mode(uint8_t mode);
 
-/*
- * BH1750_ReadLux
- * ----------------------------
- * Reads light level in lux from BH1750.
- *
- * Returns lux value as 16-bit integer.
- */
-BH1750_Status_t BH1750_read_lux(float *lux);
+BH1750_Status_t BH1750_read_lux(uint16_t *lux);
 
 
 
